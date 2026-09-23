@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#01040a" />
+<title>ISV — International Student Visas</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div class="preloader" role="status" aria-live="polite">
+    <img class="preloader-logo" src="assets/f6d504c4-b680-476f-9c17-8a6f5f665cf9.svg" alt="Anchor AI" />
+    <div class="preloader-status"><span>Loading</span><strong><b>0</b>%</strong></div>
+  </div>
+  <div class="custom-cursor" aria-hidden="true"><span class="custom-cursor-ring"></span></div>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top"><img src="assets/67e0c5ba-063f-4574-a118-f8b48f7293ac.svg" alt="Anchor AI" /></a>
+    <nav><a href="#platform">Platform</a><a href="#solutions">Solutions</a><a href="#analytics">Analytics</a><a href="#integrations">Integrations</a></nav>
+    <a class="pill primary demo" href="#contact">Request Demo</a>
+  </header>
+
+  <section class="hero-ui" aria-label="Anchor AI hero">
+    <div class="hero-title"><span class="kicker"><i></i>Operational Intelligence</span><h1>Streamlined Insurance Operations</h1></div>
+    <div class="hero-copy"><p>Optimize underwriting workflows, automate claims routing, and deliver real-time operational transparency with our enterprise-grade orchestration engine.</p><div class="actions"><a class="pill primary" href="#platform">Get Started</a><a class="pill light" href="#specs">View Technical Specs</a></div></div>
+    <div class="app-download"><img class="qr" src="assets/4a091192-4421-4b4f-ab64-6ad6040e1ab5.svg" alt="Download Anchor AI app" /><div><p>Easy to Start<br />with our App</p><span><img src="assets/ac4e9ebf-70ce-41f4-9e7f-bc25cad5bd75.svg" alt="App Store" /><img src="assets/cb074f35-f7aa-4519-b4d9-e2d1916f953f.svg" alt="Google Play" /></span></div></div>
+  </section>
+
+  <div class="logo-flight" aria-label="Companies that trust Anchor AI">
+    <div class="trust-card"><img src="assets/d7b9f28b-3bfd-440b-b851-ffe50379b8a0.svg" alt="AIG" /></div><div class="trust-card"><img src="assets/e3446ae8-3faa-42b2-a95d-7e425f22105b.svg" alt="Allianz" /></div>
+    <div class="trust-card"><img src="assets/a7efecc6-ca2d-4311-8810-4daf5b8ba02b.svg" alt="AXA" /></div><div class="trust-card"><img src="assets/397b79ca-9df9-4974-8935-d8d13753cf5f.svg" alt="Chubb" /></div>
+    <div class="trust-card"><img src="assets/57e09766-4774-4532-bc3b-9cb026aceea5.svg" alt="Liberty Mutual" /></div><div class="trust-card"><img src="assets/b9622a42-606d-4184-9912-f333ba66d5d8.svg" alt="MetLife" /></div>
+    <div class="trust-card"><img src="assets/b7eb74cc-9369-41ea-bb27-bfe6b23ea4cf.svg" alt="Munich Re" /></div><div class="trust-card"><img src="assets/28f4adb3-6d9c-4859-b3a1-beef3def4f14.svg" alt="Prudential" /></div>
+    <div class="trust-card"><img src="assets/ebcd6027-8194-4b4d-9f0a-0a81dcd29c70.svg" alt="Travelers" /></div><div class="trust-card"><img src="assets/eef6a4a5-c1c6-4247-a6f3-b10a0726261c.svg" alt="Zurich" /></div>
+  </div>
+
+  <section class="second-ui" id="platform" aria-label="Anchor AI platform features">
+    <h2>Intelligence With Purpose</h2>
+    <p class="second-intro">A unified suite of automation tools engineered specifically for risk assessment, document ingestion, and compliance teams.</p>
+    <div class="feature-grid">
+      <article><span>01</span><div><h3>Automated Underwriting</h3><p>Evaluate risk and route policies through customized compliance workflows without manual intervention.</p></div></article>
+      <article><span>02</span><div><h3>Real-time Metrics Tracking</h3><p>Monitor active policies, pending claims, and agent efficiency across multiple operational teams.</p></div></article>
+      <article><span>03</span><div><h3>Smart Claims Triaging</h3><p>Extract insights from claims forms and automatically assign difficulty scores for optimal routing.</p></div></article>
+      <article><span>04</span><div><h3>Audit Trail &amp; Compliance</h3><p>Maintain a secure, time-stamped log of every automated action and underwriting decision.</p></div></article>
+    </div>
+  </section>
+
+  <main id="top" aria-hidden="true"></main>
+
+<!-- Anchor AI scene: three.js r179 + app code in script.js. No module loading, no build step. -->
+
+  <script src="script.js"></script>
+  <script>
+  (function () {
+    function revealUi(reason) {
+      var root = document.documentElement;
+      if (root.classList.contains("intro-ready")) return;
+      root.classList.add("intro-ready", "static-fallback");
+      root.classList.remove("is-loading");
+      if (reason === "webgl") root.classList.add("no-webgl");
+      var preloader = document.querySelector(".preloader");
+      if (preloader && !preloader.classList.contains("is-gone")) {
+        preloader.classList.add("is-leaving");
+        setTimeout(function () { preloader.classList.add("is-gone"); }, 1100);
+      }
+    }
+
+    var sceneScript = document.querySelector('script[src="script.js"]');
+    if (sceneScript) sceneScript.addEventListener("error", function () { revealUi("script"); });
+
+    /* Do not call canvas.getContext() here — it can break Three.js or falsely hide #scene via .no-webgl */
+
+    setTimeout(function () {
+      if (!document.documentElement.classList.contains("intro-ready")) revealUi("timeout");
+    }, 12000);
+  })();
+  </script>
+</body>
+</html>
